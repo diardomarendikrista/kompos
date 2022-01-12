@@ -38,7 +38,7 @@ export default function DetailPage({ newsData }) {
 				<meta property="og:url" content="https://kompos.vercel.app" />
 				<meta
 					property="og:title"
-					content="KOMPOS - Berita siapapun bisa tulis"
+					content={`KOMPOS - ${newsData.title ?? 'berita terupdate tergantung yang nulis'}`}
 				/>
 				<meta
 					property="og:description"
