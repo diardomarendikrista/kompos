@@ -19,7 +19,7 @@ export default function DetailPage({ newsData }) {
 			// Do nothing!
 		}
 	};
-	
+
   if (router.isFallback) {
     return <div>Loading...</div>
   }
@@ -96,7 +96,7 @@ export async function getStaticPaths() {
 	const { data } = await axios.get('/news');
 
 	return {
-		fallback: true,
+		fallback: false,
 		paths: data.map((news) => ({
 			params: {
 				newsId: news.id.toString(),
