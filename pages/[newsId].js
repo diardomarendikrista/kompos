@@ -92,7 +92,7 @@ export async function getStaticPaths() {
 	const { data } = await axios.get('/news');
 
 	return {
-		fallback: false,
+		fallback: true,
 		paths: data.map((news) => ({
 			params: {
 				newsId: news.id.toString(),
