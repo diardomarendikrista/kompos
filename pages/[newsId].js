@@ -19,6 +19,10 @@ export default function DetailPage({ newsData }) {
 			// Do nothing!
 		}
 	};
+	
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
 
 	return (
 		<Layout>
