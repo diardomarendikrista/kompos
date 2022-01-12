@@ -1,0 +1,42 @@
+.wrapper {
+	width: 100%;
+	background-color: black;
+	color: #fff;
+	z-index: 1000;
+	padding-top: 20px;
+	padding-bottom: 80px;
+}
+
+.wrapper a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.wrapper a:hover {
+	color: aqua;
+}
+
+.body {
+	max-width: 1200px;
+	margin: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.logo {
+	border-radius: 100%;
+	overflow: hidden;
+}
+
+@media (max-width: 700px) {
+  .wrapper {
+    padding-bottom: 20px;
+  }
+  
+	.body {
+		max-width: 1200px;
+		margin: auto;
+		display: inline;
+	}
+}

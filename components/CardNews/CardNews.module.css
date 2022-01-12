@@ -1,0 +1,35 @@
+.card {
+	position: relative;
+	width: 100%;
+	display: flex;
+}
+
+.description {
+	width: 100%;
+	max-height: 100px;
+	overflow: hidden;
+}
+
+.detail {
+	position: absolute;
+	bottom: 1px;
+	right: 1px;
+	background-color: #fff;
+}
+
+.title {
+	cursor: pointer;
+}
+
+.title:hover {
+	text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+	.card {
+		display: inline;
+	}
+  .detail {
+    position: relative;
+  }
+}
