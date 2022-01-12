@@ -70,7 +70,7 @@ export default function NewsPage() {
 					content="http://4.bp.blogspot.com/-laQY9R4lgyg/UyoTAQmK94I/AAAAAAAAGX8/o1v3cjkZjtU/s1600/iklan+koran+kompas.png"
 				/>
 			</Head>
-			<div className="w-50 m-auto">
+			<div className="w-lg-50 m-auto">
 				<div className="d-flex justify-content-center mb-2">
 					<h1>Tambah berita</h1>
 				</div>
