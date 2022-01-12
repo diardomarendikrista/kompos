@@ -20,9 +20,9 @@ export default function DetailPage({ newsData }) {
 		}
 	};
 
-  if (router.isFallback) {
-    return <div>Loading...</div>
-  }
+	if (router.isFallback) {
+		return <div>Loading...</div>;
+	}
 
 	return (
 		<Layout>
@@ -42,7 +42,9 @@ export default function DetailPage({ newsData }) {
 				<meta property="og:url" content="https://kompos.vercel.app" />
 				<meta
 					property="og:title"
-					content={`KOMPOS - ${newsData.title ?? 'berita terupdate tergantung yang nulis'}`}
+					content={`KOMPOS - ${
+						newsData.title ?? 'berita terupdate tergantung yang nulis'
+					}`}
 				/>
 				<meta
 					property="og:description"
@@ -92,25 +94,54 @@ export default function DetailPage({ newsData }) {
 	);
 }
 
-export async function getStaticPaths() {
-	const { data } = await axios.get('/news');
+// export async function getStaticPaths() {
+// 	const { data } = await axios.get('/news');
 
-	return {
-		fallback: true,
-		paths: data.map((news) => ({
-			params: {
-				newsId: news.id.toString(),
-			},
-		})),
-	};
-}
+// 	return {
+// 		fallback: true,
+// 		paths: data.map((news) => ({
+// 			params: {
+// 				newsId: news.id.toString(),
+// 			},
+// 		})),
+// 	};
+// }
 
-export async function getStaticProps(context) {
+// export async function getStaticProps(context) {
+// 	const newsId = context.params.newsId;
+
+// 	try {
+// 		const { data } = await axios.get(`/news/${newsId}`);
+// 		// console.log(data, 'INI DATA');
+// 		return {
+// 			props: {
+// 				newsData: data,
+// 			},
+// 		};
+// 	} catch (error) {
+// 		console.log(error);
+// 		return;
+// 	}
+// }
+
+export async function getServerSideProps(context) {
 	const newsId = context.params.newsId;
 
 	try {
 		const { data } = await axios.get(`/news/${newsId}`);
 		// console.log(data, 'INI DATA');
+		if (!data) {
+			return {
+				redirect: {
+					destination: '/no-data',
+				},
+			};
+		}
+
+		if (data?.newsData?.length <= 0) {
+			return { notFound: true };
+		}
+
 		return {
 			props: {
 				newsData: data,

@@ -47,15 +47,43 @@ export default function NewsPage({ news }) {
 	);
 }
 
-export async function getStaticProps() {
+// export async function getStaticProps() {
+// 	try {
+// 		const { data } = await axios.get('/news?_sort=id&_order=desc');
+// 		// console.log(data, 'INI DATA');
+// 		return {
+// 			props: {
+// 				news: data,
+// 			},
+// 			revalidate: 1,
+// 		};
+// 	} catch (error) {
+// 		console.log(error);
+// 		return;
+// 	}
+// }
+
+export async function getServerSideProps() {
 	try {
 		const { data } = await axios.get('/news?_sort=id&_order=desc');
-		// console.log(data, 'INI DATA');
+
+		if (!data) {
+			return {
+				redirect: {
+					destination: '/no-data',
+				},
+			};
+		}
+
+		if (data?.news?.length <= 0) {
+			return { notFound: true };
+		}
+
+		console.log(data, 'INI DATA');
 		return {
 			props: {
 				news: data,
 			},
-			revalidate: 1,
 		};
 	} catch (error) {
 		console.log(error);
