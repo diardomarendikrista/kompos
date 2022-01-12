@@ -16,7 +16,7 @@ export default function NewsPage({ news }) {
 				/>
 
 				<meta property="og:type" content="website" />
-				<meta property="og:url" content="http://140.0.152.41:3000/" />
+				<meta property="og:url" content="https://kompos.vercel.app" />
 				<meta
 					property="og:title"
 					content="KOMPOS - Berita siapapun bisa tulis"
