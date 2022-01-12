@@ -41,6 +41,7 @@ export default function NewsPage({ news }) {
 								<hr />
 							</div>
 						))}
+					{news.length <= 0 && <div className='mb-5 text-secondary'>- belum ada berita -</div>}
 				</div>
 			</div>
 		</Layout>
@@ -87,6 +88,6 @@ export async function getServerSideProps() {
 		};
 	} catch (error) {
 		console.log(error);
-		return;
+		return { notFound: true };
 	}
 }
