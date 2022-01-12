@@ -81,7 +81,7 @@ export default function DetailPage({ newsData }) {
 					</div>
 				</div>
 				<div className="mb-5">
-					<p>{newsData.description ?? ''}</p>
+					<p>{newsData.description ?? ' '}</p>
 				</div>
 			</div>
 		</Layout>
