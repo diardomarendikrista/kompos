@@ -3,13 +3,13 @@ import { useRouter } from 'next/router';
 import Layout from '../Layout/layout';
 import Link from 'next/link';
 import Head from 'next/head';
-// import Image from 'next/image';
-// import { imageErrorHandler } from '../config/utils/globalFunctions';
+import Image from 'next/image';
+import { imageErrorHandler } from '../config/utils/globalFunctions';
 
 import axios from '../axios/axios';
 
 export default function DetailPage({ newsData }) {
-	// const [useDefaultImg, setUseDefaultImg] = React.useState(false);
+	const [useDefaultImg, setUseDefaultImg] = React.useState(false);
 	const router = useRouter();
 
 	const { newsId } = router.query;
@@ -26,9 +26,9 @@ export default function DetailPage({ newsData }) {
 		return <div>Loading...</div>;
 	}
 
-	// const myLoader = ({ src, width, quality }) => {
-	// 	return `${newsData.imageUrl}/${src}?w=${width}&q=${quality || 75}`;
-	// };
+	const myLoader = ({ src, width, quality }) => {
+		return `${newsData.imageUrl}/${src}?w=${width}&q=${quality || 75}`;
+	};
 
 	return (
 		<Layout>
@@ -82,7 +82,7 @@ export default function DetailPage({ newsData }) {
 				</div>
 				<div className="mb-2">
 					<div className="detail-image">
-						{/* {!useDefaultImg ? (
+						{!useDefaultImg ? (
 							<Image
 								loader={myLoader}
 								src={'image.png'}
@@ -93,7 +93,7 @@ export default function DetailPage({ newsData }) {
 									setUseDefaultImg(true);
 								}}
 							/>
-						) : ( */}
+						) : (
 							<img
 								src={
 									newsData.imageUrl ??
@@ -101,11 +101,11 @@ export default function DetailPage({ newsData }) {
 								}
 								alt={newsData.title}
 								style={{ maxHeight: '350px', maxWidth: '100%' }}
-								// onError={(e) => {
-								// 	imageErrorHandler(e);
-								// }}
+								onError={(e) => {
+									imageErrorHandler(e);
+								}}
 							/>
-						{/* )} */}
+						)}
 					</div>
 				</div>
 				<div className="mb-5">
