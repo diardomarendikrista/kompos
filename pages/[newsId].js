@@ -3,13 +3,13 @@ import { useRouter } from 'next/router';
 import Layout from '../Layout/layout';
 import Link from 'next/link';
 import Head from 'next/head';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { imageErrorHandler } from '../config/utils/globalFunctions';
 
 import axios from '../axios/axios';
 
 export default function DetailPage({ newsData }) {
-	const [useDefaultImg, setUseDefaultImg] = React.useState(false);
+	// const [useDefaultImg, setUseDefaultImg] = React.useState(false);
 	const router = useRouter();
 
 	const { newsId } = router.query;
@@ -82,7 +82,7 @@ export default function DetailPage({ newsData }) {
 				</div>
 				<div className="mb-2">
 					<div className="detail-image">
-						{!useDefaultImg ? (
+						{/* {!useDefaultImg ? (
 							<Image
 								loader={myLoader}
 								src={'image.png'}
@@ -93,7 +93,7 @@ export default function DetailPage({ newsData }) {
 									setUseDefaultImg(true);
 								}}
 							/>
-						) : (
+						) : ( */}
 							<img
 								src={
 									newsData.imageUrl ??
@@ -105,7 +105,7 @@ export default function DetailPage({ newsData }) {
 									imageErrorHandler(e);
 								}}
 							/>
-						)}
+						{/* )} */}
 					</div>
 				</div>
 				<div className="mb-5">

@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './CardNews.module.css';
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { imageErrorHandler } from '../../config/utils/globalFunctions';
 
 export default function CardNews({ news }) {
-	const [useDefaultImg, setUseDefaultImg] = React.useState(false);
+	// const [useDefaultImg, setUseDefaultImg] = React.useState(false);
 
 	const myLoader = ({ src, width, quality }) => {
 		return `${news.imageUrl}/${src}?w=${width}&q=${quality || 75}`;
@@ -15,7 +15,7 @@ export default function CardNews({ news }) {
 		<div className={styles.card}>
 			<div>
 				<div className={styles.imagecontainer}>
-					{!useDefaultImg ? (
+					{/* {!useDefaultImg ? (
 						<Image
 							loader={myLoader}
 							src={'image.png'}
@@ -26,7 +26,7 @@ export default function CardNews({ news }) {
 								setUseDefaultImg(true);
 							}}
 						/>
-					) : (
+					) : ( */}
 						<img
 							src={news.imageUrl ?? ''}
 							alt={news.title}
@@ -35,7 +35,7 @@ export default function CardNews({ news }) {
 								imageErrorHandler(e);
 							}}
 						/>
-					)}
+					{/* )} */}
 				</div>
 			</div>
 			<div className="ms-2 me-2">
