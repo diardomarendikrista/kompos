@@ -35,3 +35,6 @@ export const BotSection = styled.div`
 		border-bottom: solid 3px gray;
 	}
 `;
+
+export default function Style () {
+	return null
