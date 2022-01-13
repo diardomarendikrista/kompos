@@ -3,9 +3,13 @@ import { useRouter } from 'next/router';
 import Layout from '../Layout/layout';
 import Link from 'next/link';
 import Head from 'next/head';
+import Image from 'next/image';
+import { imageErrorHandler } from '../config/utils/globalFunctions';
+
 import axios from '../axios/axios';
 
 export default function DetailPage({ newsData }) {
+	const [useDefaultImg, setUseDefaultImg] = React.useState(false);
 	const router = useRouter();
 
 	const { newsId } = router.query;
@@ -15,14 +19,16 @@ export default function DetailPage({ newsData }) {
 			if (data) {
 				router.push('/');
 			}
-		} else {
-			// Do nothing!
 		}
 	};
 
 	if (router.isFallback) {
 		return <div>Loading...</div>;
 	}
+
+	const myLoader = ({ src, width, quality }) => {
+		return `${newsData.imageUrl}/${src}?w=${width}&q=${quality || 75}`;
+	};
 
 	return (
 		<Layout>
@@ -76,14 +82,30 @@ export default function DetailPage({ newsData }) {
 				</div>
 				<div className="mb-2">
 					<div className="detail-image">
-						<img
-							src={
-								newsData.imageUrl ??
-								'https://lustersnewfaceofpinkintl.com/wp-content/uploads/2020/04/image-coming-soon.jpg'
-							}
-							alt={newsData.title}
-							style={{ maxHeight: '350px', maxWidth: '100%' }}
-						/>
+						{!useDefaultImg ? (
+							<Image
+								loader={myLoader}
+								src={'image.png'}
+								alt={newsData.title}
+								width={500}
+								height={300}
+								onError={() => {
+									setUseDefaultImg(true);
+								}}
+							/>
+						) : (
+							<img
+								src={
+									newsData.imageUrl ??
+									'https://lustersnewfaceofpinkintl.com/wp-content/uploads/2020/04/image-coming-soon.jpg'
+								}
+								alt={newsData.title}
+								style={{ maxHeight: '350px', maxWidth: '100%' }}
+								onError={(e) => {
+									imageErrorHandler(e);
+								}}
+							/>
+						)}
 					</div>
 				</div>
 				<div className="mb-5">
