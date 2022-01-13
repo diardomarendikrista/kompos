@@ -4,7 +4,7 @@ import Layout from '../Layout/layout';
 import Link from 'next/link';
 import Head from 'next/head';
 // import Image from 'next/image';
-import { imageErrorHandler } from '../config/utils/globalFunctions';
+// import { imageErrorHandler } from '../config/utils/globalFunctions';
 
 import axios from '../axios/axios';
 
@@ -26,9 +26,9 @@ export default function DetailPage({ newsData }) {
 		return <div>Loading...</div>;
 	}
 
-	const myLoader = ({ src, width, quality }) => {
-		return `${newsData.imageUrl}/${src}?w=${width}&q=${quality || 75}`;
-	};
+	// const myLoader = ({ src, width, quality }) => {
+	// 	return `${newsData.imageUrl}/${src}?w=${width}&q=${quality || 75}`;
+	// };
 
 	return (
 		<Layout>
@@ -101,9 +101,9 @@ export default function DetailPage({ newsData }) {
 								}
 								alt={newsData.title}
 								style={{ maxHeight: '350px', maxWidth: '100%' }}
-								onError={(e) => {
-									imageErrorHandler(e);
-								}}
+								// onError={(e) => {
+								// 	imageErrorHandler(e);
+								// }}
 							/>
 						{/* )} */}
 					</div>
