@@ -38,3 +38,4 @@ export const BotSection = styled.div`
 
 export default function Style () {
 	return null
+}
