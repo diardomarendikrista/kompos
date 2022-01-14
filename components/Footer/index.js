@@ -74,7 +74,7 @@ export default function Footer() {
 					</div>
 					<div>
 						<span className="">
-							gada Copyright-Copyrightan 2022 ini cuman website buat belajar.
+							Ga ada Copyright-Copyrightan 2022 ini cuman website buat belajar.
 							All Right Not Reserved
 						</span>
 					</div>
